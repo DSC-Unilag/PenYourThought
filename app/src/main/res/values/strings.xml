@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">PenIt</string>
+    <string name="title_activity_note">NoteActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="start">Start</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+
+    <string name="slide_1_title">New IDEAS on your mind?</string>
+    <string name="slide_1_desc">The easiest way to write down your ideas on your smartphone!</string>
+
+    <string name="slide_2_title">Travelling?</string>
+    <string name="slide_2_desc">Capture your memory with Pen It!</string>
+
+    <string name="slide_3_title">Research</string>
+    <string name="slide_3_desc">Pen your findings down with Pen It!</string>
+
+    <string name="slide_4_title">ANYTIME/ANYWHERE</string>
+    <string name="slide_4_desc">Your thought is always available on any device you sign in with!!!</string>
+</resources>

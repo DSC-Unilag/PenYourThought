@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "61660452715",
+    "firebase_url": "https://penit-558c8.firebaseio.com",
+    "project_id": "penit-558c8",
+    "storage_bucket": "penit-558c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:61660452715:android:b6eb2295b5dfdff2",
+        "android_client_info": {
+          "package_name": "com.iamdeejay.penit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "61660452715-udmnicu4rqg822amrn04aidcsfmu6ul5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.iamdeejay.penit",
+            "certificate_hash": "7567990ec60493077e8adff4fbd4ddd43e9c0dc9"
+          }
+        },
+        {
+          "client_id": "61660452715-urr15s0fpc48qt8dgppjr5lidbnvjjii.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3wESOcLVDAFO608p-N2f_woA3IgakPbs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "61660452715-urr15s0fpc48qt8dgppjr5lidbnvjjii.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
