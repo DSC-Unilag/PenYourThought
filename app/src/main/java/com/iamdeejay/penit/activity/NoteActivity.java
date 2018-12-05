@@ -1,23 +1,28 @@
-package com.iamdeejay.penit;
+package com.iamdeejay.penit.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
+import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.iamdeejay.penit.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,8 +56,7 @@ public class NoteActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                startAddNoteActivity();
             }
         });
 
@@ -66,11 +70,18 @@ public class NoteActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    private void startAddNoteActivity() {
+        Intent addEntry = new Intent(this, AddNoteActivity.class);
+        startActivity(addEntry);
+    }
+
+
     private void Authenticate() {
         startActivityForResult(
                 AuthUI.getInstance()
                         .createSignInIntentBuilder()
                         .setAvailableProviders(getAuthProviderList())
+                        .setLogo(R.drawable.ic_speaker_notes_white_24dp)
                         .setIsSmartLockEnabled(false).build(), REQUEST_CODE);
     }
 
@@ -78,7 +89,7 @@ public class NoteActivity extends AppCompatActivity
         List<AuthUI.IdpConfig> providers = new ArrayList<>();
         providers.add(new AuthUI.IdpConfig.EmailBuilder().build());
         providers.add(new AuthUI.IdpConfig.GoogleBuilder().build());
-        providers.add(new AuthUI.IdpConfig.PhoneBuilder().build());
+        //providers.add(new AuthUI.IdpConfig.PhoneBuilder().build());
         return providers;
     }
 
@@ -110,8 +121,22 @@ public class NoteActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        //IdpResponse response = IdpResponse.fromResultIntent(data);
+        mAuth = FirebaseAuth.getInstance();
+        if (resultCode == Activity.RESULT_OK) {
+            Toast.makeText(this, "You are Signed-In", Toast.LENGTH_SHORT).show();
+        } else if (resultCode == Activity.RESULT_CANCELED) {
+            Authenticate();
+            Toast.makeText(this, "You need to be Signed-In to use this app",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 
     @SuppressWarnings("StatementWithEmptyBody")

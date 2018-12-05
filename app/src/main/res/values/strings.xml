@@ -23,4 +23,6 @@
 
     <string name="slide_4_title">ANYTIME/ANYWHERE</string>
     <string name="slide_4_desc">Your thought is always available on any device you sign in with!!!</string>
+    <string name="title">Title</string>
+    <string name="text">Content</string>
 </resources>

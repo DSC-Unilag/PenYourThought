@@ -12,11 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".NoteActivity"
+            android:name=".activity.NoteActivity"
             android:label="@string/title_activity_note"
             android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity android:name=".activity.SplashActivity"
+        <activity
+            android:name=".activity.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,6 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.AddNoteActivity"></activity>
     </application>
 
 </manifest>

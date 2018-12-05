@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:theme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="?actionBarSize">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/default_gap"
+            android:layout_marginRight="@dimen/default_gap"
+            android:layout_marginTop="@dimen/default_gap"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:hint="@string/title"
+                android:imeOptions="actionNext"
+                android:inputType="textCapSentences|textMultiLine|textShortMessage|textAutoCorrect"
+                android:textColor="@color/primary_text"
+                android:textColorHint="@color/abc_secondary_text_material_light"
+                android:textCursorDrawable="@null"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/edit_note"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                android:hint="@string/text"
+                android:background="@null"
+                android:inputType="textCapSentences|textMultiLine|textLongMessage|textAutoCorrect"
+                android:textColor="@color/primary_text"
+                android:textColorHint="@color/abc_secondary_text_material_light"
+                android:textCursorDrawable="@null"
+                android:textSize="16sp"
+                android:paddingBottom="75dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
