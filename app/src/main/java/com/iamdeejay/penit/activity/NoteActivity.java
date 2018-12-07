@@ -14,6 +14,8 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -27,6 +29,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.iamdeejay.penit.R;
+import com.iamdeejay.penit.adapter.PenAdapter;
 import com.iamdeejay.penit.model.PenEntry;
 import com.iamdeejay.penit.model.PenRepository;
 
@@ -38,6 +41,9 @@ public class NoteActivity extends AppCompatActivity
 
     private NoteViewModel noteViewModel;
     private PenRepository mRepository;
+    RecyclerView recyclerView;
+    PenAdapter penAdapter;
+    List<PenEntry> penEntryList;
 
     private static final int REQUEST_CODE = 101;
 
@@ -53,11 +59,19 @@ public class NoteActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        NoteViewModel noteViewModel = ViewModelProviders.of(this).get(NoteViewModel.class);
+        recyclerView = findViewById(R.id.recyclerview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        penAdapter = new PenAdapter(this, penEntryList);
+        recyclerView.setAdapter(penAdapter);
+
+        noteViewModel = ViewModelProviders.of(this).get(NoteViewModel.class);
         noteViewModel.getAllPenEntry().observe(NoteActivity.this, new Observer<List<PenEntry>>() {
             @Override
             public void onChanged(@Nullable List<PenEntry> penEntries) {
-                
+                if (penEntries == null){
+                    mRepository.loadAllEntry();
+                }
             }
         });
 
