@@ -1,20 +1,28 @@
 package com.iamdeejay.penit.model;
 
-import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
-@Entity
+@Entity(tableName = "penEntry")
 public class PenEntry {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
-
-    @ColumnInfo(name = "title")
     private String title;
-
-    @ColumnInfo(name = "content")
     private String content;
+    private long timestamp;
+
+    @Ignore
+    public PenEntry() {
+    }
+
+    public PenEntry(int id, String title, String content, long timestamp) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.timestamp = timestamp;
+    }
 
     public int getId() {
         return id;
@@ -30,6 +38,14 @@ public class PenEntry {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
     }
 
     public String getContent() {

@@ -5,7 +5,7 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
-@Database(entities = {PenEntry.class}, version = 1)
+@Database(entities = {PenEntry.class}, version = 1, exportSchema = false)
 public abstract class PenDatabase extends RoomDatabase {
 
     private static final String DATABASE_NAME = "penEntry";
@@ -24,6 +24,5 @@ public abstract class PenDatabase extends RoomDatabase {
     }
 
     public abstract PenDAO penDAO();
-
 
 }

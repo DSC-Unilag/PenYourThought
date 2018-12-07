@@ -1,6 +1,10 @@
 package com.iamdeejay.penit.activity;
 
 import android.app.Activity;
+import android.arch.lifecycle.AndroidViewModel;
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -23,12 +27,17 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.iamdeejay.penit.R;
+import com.iamdeejay.penit.model.PenEntry;
+import com.iamdeejay.penit.model.PenRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class NoteActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private NoteViewModel noteViewModel;
+    private PenRepository mRepository;
 
     private static final int REQUEST_CODE = 101;
 
@@ -43,6 +52,14 @@ public class NoteActivity extends AppCompatActivity
         setContentView(R.layout.activity_note);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        NoteViewModel noteViewModel = ViewModelProviders.of(this).get(NoteViewModel.class);
+        noteViewModel.getAllPenEntry().observe(NoteActivity.this, new Observer<List<PenEntry>>() {
+            @Override
+            public void onChanged(@Nullable List<PenEntry> penEntries) {
+                
+            }
+        });
 
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
